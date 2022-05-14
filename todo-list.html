@@ -1,48 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Todos List</title>
-<script src="model.js"></script>
-<script src="lib.js"></script>
-</head>
-<body>
-<h3 id="heading"></h3>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Todos List</title>
+        <script src="model.js"></script>
+        <script src="lib.js"></script>
+    </head>
+    <body>
+        <h3 id="heading"></h3>
 
-<table border="1">
-<tr>
-    <th>Description</th>
-    <th>Due</th>
-    <th>Complete?</th>
-</tr>
-    <script>
+        <table border="1" id="todo-table">
+            <tr>
+                <th>Description</th>
+                <th>Due</th>
+                <th>Complete?</th>
+            </tr>
 
-    function outputHTML() {
-
-        let catIndex = urlParams.catIndex
-        if (catIndex == null || isNaN(catIndex) || catIndex < 0 || catIndex > cats.length-1) {
-            document.write("Invalid category index")
-            return
-        }
-
-        document.getElementById("heading").innerHTML = `Todos: ${cats[catIndex].name}`
-
-        let todos = cats[catIndex].todos
-        for (let i = 0; i < todos.length; i++) {
-            document.write(`
-                <tr>
-                    <td>${todos[i].desc}</td>
-                    <td>${todos[i].due}</td>
-                    <td>${todos[i].isDone}</td>
-                </tr>`)
-        }
-    }
-
-    outputHTML()
-    </script>
-
-</table>
-</body>
+        </table>
+        <script src="todo-list.js"></script>
+    </body>
 </html>
 

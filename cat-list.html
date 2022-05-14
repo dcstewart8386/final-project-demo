@@ -1,32 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Categories List</title>
-<script src="model.js"></script>
-<script src="lib.js"></script>
-</head>
-<body>
-<h3>Todo Categories</h3>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Categories List</title>
+        <script src="model.js"></script>
+        <script src="lib.js"></script>
+    </head>
 
-<ul>
-    <script>
-    function outputHTML() {
-        
-        for (let i = 0; i < cats.length; i++) {
-            document.write(`
-                <li>
-                    <a href="todo-list.html?catIndex=${i}">${cats[i].name}</a>
-                    (<a href="delete-cat.html?catIndex=${i}">Delete</a>)
-                </li>`)
-        }
-    }
+    <body>
+        <h3>Todo Categories</h3>
 
-    outputHTML()
-    </script>
+        <ul id="cat-list">
+            <!-- JavaScript will populate this list -->
+        </ul>
+        <script src="cat-list.js"></script>
+    </body>
 
-</ul>
-</body>
 </html>
 
