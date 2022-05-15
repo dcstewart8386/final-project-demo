@@ -8,17 +8,18 @@ function outputHTML() {
     }
 
     // Update the heading with the name of the category
-    document.getElementById("heading").innerHTML = `Todos: ${cats[catIndex].name}`
+    setHTML("heading", `Todos: ${cats[catIndex].name}`)
 
     // Append data to the table
     let todos = cats[catIndex].todos
     for (let i = 0; i < todos.length; i++) {
-        document.getElementById("todo-table").innerHTML += `
+        appendHTML("todo-table", `
             <tr>
                 <td>${todos[i].desc}</td>
                 <td>${todos[i].due}</td>
                 <td>${todos[i].isDone}</td>
             </tr>`
+        )
     }
 }
 
