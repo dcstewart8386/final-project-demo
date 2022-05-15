@@ -1,11 +1,14 @@
-function outputHTML() {
-
+function getCatIndex() {
     // Check that the category index in the URL is valid
-    let catIndex = urlParams.catIndex
-    if (catIndex == null || isNaN(catIndex) || catIndex < 0 || catIndex > cats.length-1) {
+    let result = urlParams.catIndex
+    if (result == null || isNaN(result) || result < 0 || result > cats.length-1) {
         document.write("Invalid category index")
-        return
+        return -1
     }
+    return result
+}
+
+function outputHTML() {
 
     // Update the heading with the name of the category
     setHTML("heading", `Todos: ${cats[catIndex].name}`)
@@ -21,25 +24,39 @@ function outputHTML() {
             <tr>
                 <td>${todos[i].desc}</td>
                 <td>${todos[i].due}</td>
-                <td><input type="checkbox" ${checkboxStatus} onclick="toggleTodo(${catIndex}, ${i})"></td>
-                <td><a href="#" onclick="deleteTodo(${catIndex}, ${i})">Delete</a></td>
+                <td><input type="checkbox" ${checkboxStatus} onclick="toggleTodo(${i})"></td>
+                <td><a href="#" onclick="deleteTodo(${i})">Delete</a></td>
             </tr>`
         )
     }
 }
 
-function deleteTodo(catIndex, todoIndex) {
+function addTodo() {
+    let desc = document.getElementById("new-todo-desc").value
+    let due = document.getElementById("new-todo-due").value
+    cats[catIndex].todos.push({
+        desc: desc,
+        due: due,
+        isDone: false
+    })
+    saveLocal(cats)
+    location.reload()
+}
+
+function deleteTodo(todoIndex) {
     let arr = cats[catIndex].todos
     arr.splice(todoIndex, 1)
     saveLocal(cats)
     location.reload()
 }
 
-function toggleTodo(catIndex, todoIndex) {
+function toggleTodo(todoIndex) {
     let curStatus = cats[catIndex].todos[todoIndex].isDone
     cats[catIndex].todos[todoIndex].isDone = !curStatus
     saveLocal(cats)
     location.reload()
 }
 
-outputHTML()
+let catIndex = getCatIndex()
+if (catIndex > -1)
+    outputHTML()
