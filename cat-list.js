@@ -4,9 +4,17 @@ function outputHTML() {
         appendHTML("cat-list", `
             <li>
                 <a href="todo-list.html?catIndex=${i}">${cats[i].name}</a>
-                (<a href="delete-cat.html?catIndex=${i}">Delete</a>)
+                (<a href="#" onclick='deleteCat(${i})'>Delete</a>)
             </li>`)
     }
 }
 
+function deleteCat(index) {
+    cats.splice(index, 1)
+    saveLocal(cats)
+    location.reload()
+}
+
+
+let cats = loadLocal(defaultCats)
 outputHTML()

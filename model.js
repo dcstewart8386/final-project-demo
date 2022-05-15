@@ -1,4 +1,4 @@
-let cats = [
+let defaultCats = [
     {
         name: "Home",
         todos: [
