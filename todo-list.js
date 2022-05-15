@@ -13,14 +13,33 @@ function outputHTML() {
     // Append data to the table
     let todos = cats[catIndex].todos
     for (let i = 0; i < todos.length; i++) {
+        let checkboxStatus = ""
+        if (todos[i].isDone) {
+            checkboxStatus = "checked"
+        }
         appendHTML("todo-table", `
             <tr>
                 <td>${todos[i].desc}</td>
                 <td>${todos[i].due}</td>
-                <td>${todos[i].isDone}</td>
+                <td><input type="checkbox" ${checkboxStatus} onclick="toggleTodo(${catIndex}, ${i})"></td>
+                <td><a href="#" onclick="deleteTodo(${catIndex}, ${i})">Delete</a></td>
             </tr>`
         )
     }
+}
+
+function deleteTodo(catIndex, todoIndex) {
+    let arr = cats[catIndex].todos
+    arr.splice(todoIndex, 1)
+    saveLocal(cats)
+    location.reload()
+}
+
+function toggleTodo(catIndex, todoIndex) {
+    let curStatus = cats[catIndex].todos[todoIndex].isDone
+    cats[catIndex].todos[todoIndex].isDone = !curStatus
+    saveLocal(cats)
+    location.reload()
 }
 
 outputHTML()
