@@ -3,7 +3,7 @@ function outputHTML() {
     for (let i = 0; i < cats.length; i++) {
         appendHTML("cat-list", `
             <li>
-                <a href="todo-list.html?catIndex=${i}">${cats[i].name}</a>
+                <a href="todos.html?catIndex=${i}">${cats[i].name}</a>
                 (<a href="#" onclick='deleteCat(${i})'>Delete</a>)
             </li>`)
     }
