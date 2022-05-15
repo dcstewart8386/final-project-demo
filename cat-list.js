@@ -9,6 +9,16 @@ function outputHTML() {
     }
 }
 
+function addCat() {
+    let name = document.getElementById("new-category").value
+    cats.push({
+        name: name,
+        todos: []
+    })
+    saveLocal(cats)
+    location.reload()
+}
+
 function deleteCat(index) {
     cats.splice(index, 1)
     saveLocal(cats)
@@ -16,5 +26,5 @@ function deleteCat(index) {
 }
 
 
-let cats = loadLocal(defaultCats)
+
 outputHTML()

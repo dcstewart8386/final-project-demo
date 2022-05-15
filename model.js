@@ -30,3 +30,5 @@ let defaultCats = [
         ]
     }
 ]
+
+let cats = loadLocal(defaultCats)

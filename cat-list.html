@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Categories List</title>
-        <script src="model.js"></script>
         <script src="lib.js"></script>
+        <script src="model.js"></script>
     </head>
 
     <body>
@@ -14,6 +14,11 @@
         <ul id="cat-list">
             <!-- JavaScript will populate this list -->
         </ul>
+
+        <p>Add a Category:
+            <input id="new-category"></input>
+            <button onclick="addCat()">Add</button>
+        </p>
 
         <p>
             <button onclick='clearLocal(); location.reload()'>Reset</button>
