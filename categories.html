@@ -18,11 +18,12 @@
 
         <p>Add a Category:
             <input id="new-category"></input>
-            <button onclick="addCat()">Add</button>
+            <button onclick="addCat()">Add</button> <!-- addCat() is in categories.js -->
         </p>
 
         <p>
-            <button onclick='clearLocal(); location.reload()'>Reset</button>
+            <!-- clearLocal is defined in common/lib.js - clears the browser storage -->
+            <button onclick="clearLocal(); location.reload()">Reset</button>
         </p>
 
         <script src="categories.js"></script>
