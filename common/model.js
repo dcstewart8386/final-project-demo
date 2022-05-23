@@ -1,3 +1,4 @@
+// This is the default data to use if none is found in the browser's local storage
 let defaultCats = [
     {
         name: "Home",
@@ -31,4 +32,6 @@ let defaultCats = [
     }
 ]
 
+// Set "cats" (short for "categories") to the data found in the browser's local storage.
+// If none is found, use "defaultCats"
 let cats = loadLocal(defaultCats)
